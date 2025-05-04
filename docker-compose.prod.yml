@@ -5,9 +5,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      target: test
-    env_file: .env.test
-    command: ["bash", "-c", "bundle exec rspec"]
+      target: prod
+    env_file: .env.prod
+    command: ["bash", "-c", "bundle exec rails s -b 0.0.0.0"]
+    ports:
+      - "3000:3000"
     depends_on:
       - db
 
