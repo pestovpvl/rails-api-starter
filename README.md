@@ -27,8 +27,11 @@ A reusable Rails API boilerplate with Docker and GitHub Actions for automated CI
 ├── docker-compose.test.yml
 ├── docker-compose.prod.yml
 ├── .env.dev
+├── .env.dev.example
 ├── .env.test
+├── .env.test.example
 ├── .env.prod
+├── .env.prod.example
 ├── .github/workflows/deploy.yml
 ├── Makefile
 ├── Gemfile
@@ -110,3 +113,28 @@ jobs:
 - Change `APP_NAME` in Makefile
 - Replace SSH values in deploy.yml or use GitHub Secrets
 - Add services (Redis, Sidekiq, etc.) as needed
+
+---
+
+## 📄 Sample .env files
+
+### .env.dev.example
+```
+RAILS_ENV=development
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=password
+```
+
+### .env.test.example
+```
+RAILS_ENV=test
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=password
+```
+
+### .env.prod.example
+```
+RAILS_ENV=production
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=secure_prod_password
+```
