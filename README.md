@@ -45,7 +45,12 @@ A reusable Rails API boilerplate with Docker and GitHub Actions for automated CI
 ```bash
 git clone https://github.com/YOUR_USERNAME/rails-api-starter.git
 cd rails-api-starter
-cp .env.dev.example .env.dev
+```
+Add files for env .env.dev, .env.test .env.prod (Examples below)
+```
+make build
+make db-create
+make dev
 make dev
 ```
 
