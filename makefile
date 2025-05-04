@@ -34,7 +34,7 @@ seed:
 	$(DOCKER_COMPOSE) run --rm app bin/rails db:seed
 
 setup:
-	$(DOCKER_COMPOSE) run --rm app bin/rails db:setup
+	$(MAKE) db-create migrate seed
 
 reset:
 	$(DOCKER_COMPOSE) run --rm app bin/rails db:reset
@@ -60,10 +60,6 @@ ci:
 lint:
 	$(DOCKER_COMPOSE) run --rm app bundle exec rubocop
 
-# Deploy to production via SSH
-deploy:
-	ssh user@your-server-ip "cd /path/to/$(APP_NAME) && git pull && docker compose -f docker-compose.prod.yml --env-file .env.prod up --build -d"
-
 lint-fix:
 	$(DOCKER_COMPOSE) run --rm app bundle exec rubocop -A
 
@@ -73,10 +69,12 @@ test-coverage:
 db-create:
 	$(DOCKER_COMPOSE) run --rm app bin/rails db:create
 
+# Deploy to production via SSH
+deploy:
+	ssh user@your-server-ip "cd /path/to/$(APP_NAME) && git pull && docker compose -f docker-compose.prod.yml --env-file .env.prod up --build -d"
+
 # TODO:
 # Replace:
-
-# 	•	user@your-server-ip — replace with your SSH user and IP
-# 	•	/path/to/rails-api-starter — to the path of the project on the server
-
+# 	• user@your-server-ip — replace with your SSH user and IP
+# 	• /path/to/rails-api-starter — to the path of the project on the server
 # It is also recommended that the SSH key is already configured for access.
