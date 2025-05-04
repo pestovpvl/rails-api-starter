@@ -1,7 +1,9 @@
 # Base stage
 FROM ruby:3.3.0-slim AS base
 WORKDIR /app
-RUN apt-get update -qq &&     apt-get install -y build-essential libpq-dev postgresql-client nodejs &&     gem install bundler
+RUN apt-get update -qq && \
+    apt-get install -y build-essential libpq-dev postgresql-client nodejs git && \
+    gem install bundler
 COPY Gemfile* ./
 RUN bundle install
 
