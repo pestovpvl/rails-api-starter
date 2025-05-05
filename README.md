@@ -51,7 +51,6 @@ Add files for env .env.dev, .env.test .env.prod (Examples below)
 make build
 make db-create
 make dev
-make dev
 ```
 
 ---
